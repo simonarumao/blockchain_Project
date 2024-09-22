@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Challenge dApp</title>
+   
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6.0/dist/ethers.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script defer src="app.js"></script>
+   
+</head>
+<body>
+    <h1>Coding Challenge dApp</h1>
+    
+    <button id="connectWallet" class="text-yellow-600">Connect Wallet</button>
+    
+    <div id="accountInfo"></div>
+    
+    <h2>Problem Statements</h2>
+    <div id="problemList"></div>
+
+    <h2>Internships</h2>
+    <div id="internshipList"></div>
+    
+    <!-- Solving problem and unlocking internships -->
+    <div>
+        <h3>Solve Problem</h3>
+        <input type="number" id="problemIndex" placeholder="Enter Problem Index" />
+        <button onclick="solveProblem()">Solve Problem</button>
+    </div>
+
+    <div>
+        <h3>Unlock Internship</h3>
+        <input type="number" id="internshipIndex" placeholder="Enter Internship Index" />
+        <button onclick="unlockInternship()">Unlock Internship</button>
+    </div>
+
+</body>
+</html>
