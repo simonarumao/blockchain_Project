@@ -9,33 +9,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script defer src="app.js"></script>
-   
 </head>
-<body>
-    <h1>Coding Challenge dApp</h1>
-    
-    <button id="connectWallet" class="text-yellow-600">Connect Wallet</button>
-    
-    <div id="accountInfo"></div>
-    
-    <h2>Problem Statements</h2>
-    <div id="problemList"></div>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">Coding Challenge dApp</h1>
+        
+        <div class="flex justify-center mb-6">
+            <button id="connectWallet" class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200">Connect Wallet</button>
+        </div>
+        
+        <div id="accountInfo" class="text-center mb-4"></div>
+        
+        <h2 class="text-2xl font-semibold mb-4">Problem Statements</h2>
+        <div id="problemList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
 
-    <h2>Internships</h2>
-    <div id="internshipList"></div>
-    
-    <!-- Solving problem and unlocking internships -->
-    <div>
-        <h3>Solve Problem</h3>
-        <input type="number" id="problemIndex" placeholder="Enter Problem Index" />
-        <button onclick="solveProblem()">Solve Problem</button>
+        <h2 class="text-2xl font-semibold mb-4">Internships</h2>
+        <div id="internshipList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+        
+        <!-- Solving problem and unlocking internships -->
+        <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+            <h3 class="text-xl font-semibold mb-2">Solve Problem</h3>
+            <input type="number" id="problemIndex" placeholder="Enter Problem Index" class="border rounded-md p-2 mb-2 w-full" />
+            <button onclick="solveProblem()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200">Solve Problem</button>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-4 mb-6">
+            <h3 class="text-xl font-semibold mb-2">Unlock Internship</h3>
+            <input type="number" id="internshipIndex" placeholder="Enter Internship Index" class="border rounded-md p-2 mb-2 w-full" />
+            <button onclick="unlockInternship()" class="bg-green-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-600 transition duration-200">Unlock Internship</button>
+        </div>
     </div>
 
-    <div>
-        <h3>Unlock Internship</h3>
-        <input type="number" id="internshipIndex" placeholder="Enter Internship Index" />
-        <button onclick="unlockInternship()">Unlock Internship</button>
-    </div>
-
+   
 </body>
 </html>
