@@ -65,7 +65,9 @@ document.getElementById('connectWallet').addEventListener('click', async () => {
         provider = new ethers.providers.Web3Provider(window.ethereum);
         signer = provider.getSigner();
         const account = await signer.getAddress();
-        document.getElementById('accountInfo').innerText = `Connected: ${account}`;
+        document.getElementById('accountInfo').innerHTML = `<h3 class="font-semibold text-lg bg-red-700 text-white mx-68 px-4 py-4">
+        Connected: ${account}</h3>
+        `;
         
         contract = new ethers.Contract(contractAddress, codingTokenAbi, signer);
 
