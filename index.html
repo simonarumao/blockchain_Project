@@ -15,7 +15,8 @@
         <h1 class="text-3xl font-bold text-center mb-6">Coding Challenge dApp</h1>
         
         <div class="flex justify-center mb-6">
-            <button id="connectWallet" class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200">Connect Wallet</button>
+            <button id="connectWallet" class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200 mr-4">Connect Wallet</button>
+            <button  class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200" onclick="showPrompt()">Admin page</button>
         </div>
         
         <div id="accountInfo" class="text-center mb-4"></div>
@@ -39,7 +40,22 @@
             <button onclick="unlockInternship()" class="bg-green-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-600 transition duration-200">Unlock Internship</button>
         </div>
     </div>
+    <script>
+        function showPrompt() {
+            // Open the prompt and store the user's input
+            let userInput = prompt("Please enter the correct phrase:");
 
+            // Check if the input matches the expected answer
+            let correctAnswer = "open sesame"; // Define the correct phrase
+            if (userInput === correctAnswer) {
+                // Redirect to another HTML page if the answer is correct
+                window.location.href = "nextpage.html"; // Replace with the URL of your next HTML page
+            } else {
+                // Alert the user if the input is incorrect
+                alert("Incorrect input. Please try again.");
+            }
+        }
+    </script>
    
 </body>
 </html>
