@@ -1,5 +1,18 @@
 const codingTokenAbi = [
-    
+    // ABI code
+    {
+        "inputs": [],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
     {
         "inputs": [],
         "name": "getInternships",
@@ -51,7 +64,6 @@ const codingTokenAbi = [
         "type": "function"
     }
 ];
-
 
 const contractAddress = "0x1bBc89D4FaA14CE2676421e9d4CE83A9c18eBcB4";
 
@@ -147,4 +159,17 @@ async function unlockInternship() {
     } catch (error) {
         console.error('Error unlocking internship:', error);
     }
+
+
 }
+
+document.getElementById('checkBalance').addEventListener('click', async () => {
+    try {
+        const account = await signer.getAddress();
+        const balance = await contract.balanceOf(account); // assuming balanceOf is a function in your contract
+        document.getElementById('balanceInfo').innerHTML = `<h3 class="font-semibold text-lg bg-green-500 text-white mx-68 px-4 py-4">
+        Balance: ${ethers.utils.formatUnits(balance, 18)} tokens</h3>`;
+    } catch (error) {
+        console.error('Error fetching balance:', error);
+    }
+});
