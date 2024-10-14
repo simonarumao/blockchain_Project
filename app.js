@@ -77,7 +77,7 @@ document.getElementById('connectWallet').addEventListener('click', async () => {
         provider = new ethers.providers.Web3Provider(window.ethereum);
         signer = provider.getSigner();
         const account = await signer.getAddress();
-        document.getElementById('accountInfo').innerHTML = `<h3 class="font-semibold text-lg bg-red-700 text-white mx-68 px-4 py-4">
+        document.getElementById('accountInfo').innerHTML = `<h3 class="font-semibold text-md  text-white mx-68 px-16 py-4 rounded-xl mt-6" style = "background-color:#2A3347; color:#919FB5;">
         Connected: ${account}</h3>
         `;
         
@@ -98,12 +98,15 @@ async function loadProblems() {
         const problems = await contract.getProblems();
         problems.forEach((problem, index) => {
             const card = document.createElement("div");
-            card.className = "bg-white shadow-md rounded-lg p-4 flex flex-col items-center";
+            card.className = "bg-white shadow-md rounded-xl p-6 flex flex-col   ";
+            card.style = "background-color:#162034;"
             card.innerHTML = `
-                <h3 class="font-semibold text-lg mb-2">${problem.title}</h3>
-                <p class="text-gray-600">Reward: ${ethers.utils.formatUnits(problem.tokenReward, 18)} tokens</p>
-                <p class="text-gray-600">Solved: ${problem.isSolved ? 'Yes' : 'No'}</p>
-                <button onclick="document.getElementById('problemIndex').value=${index}" class="bg-blue-500 text-white py-1 px-2 rounded mt-2">Index ${index}</button>
+
+                <h3 class="font-semibold text-white text-2xl mb-1 ">${problem.title}</h3>
+                <p class="font-semibold mb-3"  style="color:#899AB1;">Reward: ${ethers.utils.formatUnits(problem.tokenReward, 18)} tokens</p>
+                <button onclick="document.getElementById('problemIndex').value=${index}" class="bg-blue-500 w-36 text-white py-1 px-4 rounded-md font-semibold mt-2" style="background-color : #0E9DDD"; >Index ${index}</button>
+                <p class="px-5 py-1 w-fit rounded-lg mt-3 text-sm" style="background-color:#13273F; color:#37B7F0;">Solved: ${problem.isSolved ? 'Yes' : 'No'}</p>
+
             `;
             problemList.appendChild(card);
         });
@@ -120,12 +123,14 @@ async function loadInternships() {
         const internships = await contract.getInternships();
         internships.forEach((internship, index) => {
             const card = document.createElement("div");
-            card.className = "bg-white shadow-md rounded-lg p-4 flex flex-col items-center";
+            card.className = "bg-white shadow-md rounded-xl p-6 flex flex-col";
+            card.style = "background-color:#162034;"
             card.innerHTML = `
-                <h3 class="font-semibold text-lg mb-2">${internship.title}</h3>
-                <p class="text-gray-600">Cost: ${ethers.utils.formatUnits(internship.tokenCost, 18)} tokens</p>
-                <p class="text-gray-600">Unlocked: ${internship.isUnlocked ? 'Yes' : 'No'}</p>
-                <button onclick="document.getElementById('internshipIndex').value=${index}" class="bg-green-500 text-white py-1 px-2 rounded mt-2">Index ${index}</button>
+                <h3 class="font-semibold text-white text-2xl mb-1 ">${internship.title}</h3>
+                <p class="font-semibold mb-3"  style="color:#899AB1;">Cost: ${ethers.utils.formatUnits(internship.tokenCost, 18)} tokens</p>
+                <button onclick="document.getElementById('internshipIndex').value=${index}" class="bg-blue-500 w-36 text-white py-1 px-4 rounded-md font-semibold mt-2" style="background-color : #BE185D";>Index ${index}</button>
+                <p class="px-5 py-1 w-fit rounded-lg mt-3 text-sm" style="background-color:#252038; color:#F472B6;">Unlocked: ${internship.isUnlocked ? 'Yes' : 'No'}</p>
+
             `;
             internshipList.appendChild(card);
         });

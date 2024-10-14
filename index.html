@@ -1,63 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Challenge dApp</title>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.6.0/dist/ethers.umd.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script defer src="app.js"></script>
-</head>
-<body class="bg-gray-100 text-gray-800">
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center mb-6">Coding Challenge dApp</h1>
-        
-        <div class="flex justify-center mb-6">
-            <button id="connectWallet" class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200 mr-4">Connect Wallet</button>
-            <button id="checkBalance" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200 mr-4">Check Balance</button>
-            <button class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200" onclick="showPrompt()">Admin page</button>
+  </head>
+  <body class="bg-gray-100" style="background-color: #0F1934">
+    <div class="container mx-auto py-6">
+    <!-- NAVBAR -->
+    <nav class="top-0 w-full fixed z-50 ">
+        <div class="relative z-50 ">
+          <div class="max-w-full mx-[20px] md:mx-[20px] lg:mx-[50px]  sm:px-2 lg:px-4 xl:px-8  sm:shadow-xl rounded-2xl mt-2  " style="background-color: #1E293B;">
+            <div class="flex items-center justify-between h-16 pl-2   ">
+              <div class="brand">
+                <a href="/" onClick={scrollToTop}>
+                  <img
+                    class="w-12 h-8 rounded-lg"
+                    src="https://i.ibb.co/ys1ZLpf/tailwindlogo-removebg-preview.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="nav-items flex items-center ">
+                <div class="hidden lg:flex lg:justify-center ">
+                  <div class=" flex  space-x-5 xl:space-x-[57px]">
+                    <div class="each-item pt-3">
+                      <a
+                        href="/analyzer"
+                        onClick={scrollToTop}
+                        class=" no-underline hover:no-underline cursor-pointer text-md text-white font-normal" style="color: #CBD5E1;"
+                      >
+                        About Us
+                      </a>
+                    </div>
+                    <div class="each-item">
+                      <a
+                        href="#internshipList"
+                        class="flex relative py-3 no-underline hover:no-underline cursor-pointer text-white text-md font-normal" style="color: #CBD5E1;"
+                       
+                      >
+                        <div class="mr-1">Explore Internship</div>
+                        <div class="pt-[6px]">
+                         
+                        </div>
+                        
+                      </a>
+                    </div>
+                    <div class="each-item ">
+                      <a
+                        href="#problemList"
+                        class="flex relative py-3 no-underline hover:no-underline cursor-pointer text-white text-md font-normal" style="color: #CBD5E1;"
+                       
+                      >
+                        <div class="mr-1">Explore Problems</div>
+                        <div class="pt-[6px]">
+                          
+                        </div>
+                        
+                      </a>
+                    </div>
+                    <div class="each-item pt-3">
+                      <a
+                        href="/hazard"
+                        class="no-underline hover:no-underline cursor-pointer text-white text-md font-normal" style="color: #CBD5E1;"
+                      >
+                        Learn Blockchain
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="each-item flex justify-center items-center  space-x-4 lg:space-x-2  xl:space-x-6 pr-2">
+                <div class="flex justify-center items-center">
+                    <button
+                    id="connectWallet"
+                    class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-yellow-600 transition duration-200 mr-4"
+                    style = "background-color: #0EA5E9;"
+                  >
+                    Connect Wallet
+                  </button>
+    
+                </div>
+                    
+                
+               
+              </div>
+            </div>
+            
+          </div>
         </div>
-        
-        <div id="accountInfo" class="text-center mb-4"></div>
-        <div id="balanceInfo" class="text-center mb-4"></div> 
-        
-        <h2 class="text-2xl font-semibold mb-4 ">Problem Statements</h2>
-        <div id="problemList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
+      </nav>
+      <div class="pt-6 pb-16">
+      <h1 class="text-5xl font-bold text-white text-center mb-5 pt-16">
+        Coding Challenge DApp
+      </h1>
+      <p class="text-center text-white text-lg mb-10" style="color:#94A3B8">Empowering Coders, Unlocking Opportunities &hyphen; Earn Tokens, Solve Challenges, Secure Your Future.</p>
 
-        <h2 class="text-2xl font-semibold mb-4">Internships</h2>
-        <div id="internshipList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"></div>
-        
-        <!-- Solving problem and unlocking internships -->
-        <div class="bg-white shadow-md rounded-lg p-4 mb-6">
-            <h3 class="text-xl font-semibold mb-2">Solve Problem</h3>
-            <input type="number" id="problemIndex" placeholder="Enter Problem Index" class="border rounded-md p-2 mb-2 w-full" />
-            <button onclick="solveProblem()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200">Solve Problem</button>
-        </div>
-
-        <div class="bg-white shadow-md rounded-lg p-4 mb-6">
-            <h3 class="text-xl font-semibold mb-2">Unlock Internship</h3>
-            <input type="number" id="internshipIndex" placeholder="Enter Internship Index" class="border rounded-md p-2 mb-2 w-full" />
-            <button onclick="unlockInternship()" class="bg-green-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-green-600 transition duration-200">Unlock Internship</button>
-        </div>
+      <!-- <div class="flex justify-center mb-6">
+        <button
+          class="bg-yellow-500 text-white font-semibold py-2 px-4 rounded shadow hover:bg-yellow-600 transition duration-200"
+          onclick="showPrompt()"
+        >
+          Admin page
+        </button>
+      </div>
+    </div> -->
+    
+    <div class="flex justify-center space-x-8 ">
+        <button
+                    class="bg-yellow-500 text-white font-semibold py-2 px-8 rounded-lg shadow hover:bg-yellow-600 transition duration-200"
+                    style = "background-color: #0EA5E9;">
+                    Get Started
+        </button>
+        <button
+                    id="connectWallet"
+                    class="bg-yellow-500 text-white font-semibold py-2 px-8 rounded-lg shadow hover:bg-yellow-600 transition duration-200"
+                    style = "background-color: #1E293B; color:#C2CCD9;"
+                  >
+                    Learn More
+        </button>
     </div>
-    <script>
-        function showPrompt() {
-            // Open the prompt and store the user's input
-            let userInput = prompt("Please enter the correct phrase:");
 
-            // Check if the input matches the expected answer
-            let correctAnswer = "open sesame"; // Define the correct phrase
-            if (userInput === correctAnswer) {
-                // Redirect to another HTML page if the answer is correct
-                window.location.href = "nextpage.html"; // Replace with the URL of your next HTML page
-            } else {
-                // Alert the user if the input is incorrect
-                alert("Incorrect input. Please try again.");
-            }
-        }
-    </script>
-   
-</body>
+      <div id="accountInfo" class="text-center mb-4 pt-6 w-fit mx-auto"></div>
+      <div id="balanceInfo" class="text-center mb-4"></div>
+</div>
+      <div style = "background-color:#0F172A;" class="px-[50px] pb-10 pt-20 ">
+      <h2 class="text-4xl font-semibold mb-4 text-white" >Problem Statements</h2>
+      <p style="color:#8F9FB3;" class="text-lg font-semibold mb-8">Tackle <span style="color: #34AEE6;">Challenges</span>, Master <span style="color: #34AEE6;">Skills</span>, and Level Up with Every Solution!</p>
+      <div
+        id="problemList"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
+      ></div>
+    
+      <h2  class="text-4xl font-semibold mb-4 text-white mt-20" >Internships</h2>
+      <p style="color:#8F9FB3;" class="text-lg font-semibold mb-8">Unlock <span style="color: #F472B6;"> Opportunities,</span> Build <span style="color: #F472B6;">Careers,</span> and Shape Your <span style="color: #F472B6;">Future!</span></p>
+      <div
+        id="internshipList"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
+      ></div>
+
+      <!-- Solving problem and unlocking internships -->
+      <div class="flex justify-between space-x-10 mt-20">
+      <div class="bg-white shadow-md rounded-xl px-6 py-7 mb-6 w-[50%]" style="background-color: #1E293B;">
+        <h3 class=" font-semibold mb-3 text-white text-3xl">Solve Problem</h3>
+        <input
+          type="text"
+          id="problemIndex"
+          placeholder="Enter Problem Index"
+          class="rounded-lg p-2 mb-3 w-full px-6 text-white "
+          style="background-color: #334155; outline: none;"
+        />
+        <button
+          onclick="solveProblem()"
+          class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition duration-200"
+          style="background-color: #4F46E5;"
+        >
+          Solve Problem
+        </button>
+      </div>
+
+      <div class="bg-white shadow-md rounded-xl  px-6 py-7 mb-6 w-[50%]" style="background-color: #1E293B;">
+        <h3 class=" font-semibold mb-3 text-white text-3xl">Unlock Internship</h3>
+        <input
+          type="text"
+          id="internshipIndex"
+          placeholder="Enter Internship Index"
+          class="rounded-lg py-2 px-6 mb-3 w-full text-white "
+          style="background-color: #334155; outline: none; "
+        />
+        <button
+          onclick="unlockInternship()"
+          class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-200"
+          style="background-color: #4F46E5;"
+        >
+          Unlock Internship
+        </button>
+      </div>
+    </div>
+     </div>
+     
+    
+    
+  </body>
 </html>
