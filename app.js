@@ -77,7 +77,7 @@ document.getElementById('connectWallet').addEventListener('click', async () => {
         provider = new ethers.providers.Web3Provider(window.ethereum);
         signer = provider.getSigner();
         const account = await signer.getAddress();
-        document.getElementById('accountInfo').innerHTML = `<h3 class="font-semibold text-md  text-white mx-68 px-16 py-4 rounded-xl mt-6" style = "background-color:#2A3347; color:#919FB5;">
+        document.getElementById('accountInfo').innerHTML = `<h3 class="font-semibold text-md text-left mx-6 px-6 text-white mx-68 sm:px-16 py-4 rounded-xl mt-6" style = "background-color:#2A3347; color:#919FB5;">
         Connected: ${account}</h3>
         `;
         
@@ -149,6 +149,7 @@ async function solveProblem() {
         alert('Problem solved!');
         loadProblems();
     } catch (error) {
+        alert("Problem Already Solved")
         console.error('Error solving problem:', error);
     }
 }
